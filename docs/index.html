@@ -2,10 +2,11 @@
 <html>
 
 <head>
-  <!-- Start Title -->
   <title>RLNetwork &mdash; Home</title> <!-- EDIT THIS ONE -->
   <!-- End Title -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<head id="setup-head">
 </head>
 
 <body>
@@ -218,13 +219,13 @@
   </section>
   <!-- End Call To Action Banner 2 -->
 
-  <footer class="footer"></footer>
+  <footer id="setup-footer" class="footer"></footer>
 
   <script>
     $(document).ready(function(){
-         $("footer").load("./assets/html/footer.html")
-         $("head").load("./assets/html/header.html")
-         $("nav").load("./assets/html/nav.html")
+         $("#setup-footer").load("./assets/html/footer.html")
+         $("#setup-head").load("./assets/html/header.html")
+         $("#navbar").load("./assets/html/nav.html")
         /* id 지정을 통해서도 가능합니다. 
          $("#header").load("header.html #navbar")
          */       
