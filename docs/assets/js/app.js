@@ -66,4 +66,5 @@ document.addEventListener("DOMContentLoaded",() => {
 window.addEventListener("scroll",() => {
 	const e = document.getElementById("navbar");
 	0 == window.scrollY ? (e.classList.remove("has-shadow","is-white"),e.classList.add("is-transparent")): window.scrollY>= 25 && (e.classList.add("has-shadow","is-white"),e.classList.remove("is-transparent"))
-});
+}
+);
