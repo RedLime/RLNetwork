@@ -6,13 +6,11 @@ var SERVER_NAME = 'RLNetwork';
 var SERVER_IP = 'redlimerl.kro.kr';
 
 getServerStatus = (async () => {
-	return await fetch(`https://api.mcsrvstat.us/2/$ {
-		SERVER_IP
-	}
+	return await fetch(`https://api.mcsrvstat.us/2/${SERVER_IP}
 	`).then(e =>e.json()).catch(e =>console.error(e))
 }),
 
-document.getElementById("ip-button")[0].addEventListener("click",() => {
+document.getElementById("ip-button").addEventListener("click",() => {
 	prompt("서버 주소를 복사하세요:",SERVER_IP)
 }),
 
