@@ -2,9 +2,29 @@
 <html>
 
 <head>
-  <?php
-    include '../includes/header.php';
-  ?>
+  <base href="https://redlime.github.io/RLNetwork/">
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="RLNetwork" /> <!-- EDIT THIS ONE -->
+  <meta property="og:site_name" content="RLNetwork" /> <!-- EDIT THIS ONE -->
+  <meta property="og:type" content="website" /> <!-- EDIT THIS ONE -->
+  <meta property="og:url" content="https://redlime.github.io/RLNetwork/" /> <!-- EDIT THIS ONE -->
+  <meta property="og:description" content="RLNetwork의 공식 사이트입니다." /> <!-- EDIT THIS ONE -->
+  <meta property="og:image" content="./images/icon.png" /> <!-- EDIT THIS ONE -->
+  <link rel="shortcut icon" href="./favicon.ico">
+  
+  <!-- End Required Meta Tags -->
+  
+  <!-- Start Required Links -->
+  
+  <!-- https://fontawesome.com/ -->
+  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+  <!-- https://bulma.io/ -->
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="./assets/js/app.js"></script>
 
   <!-- Start Title -->
   <title>RLNetwork &mdash; 서버</title> <!-- EDIT THIS ONE -->
@@ -12,11 +32,54 @@
 </head>
 
 <body>
-  <?php
-    include '../includes/nav.php';
-  ?>
-
-  
+  <!-- Start Navbar -->
+<nav id="navbar" class="navbar fixed is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container">
+      <div class="navbar-brand">
+      <!-- Start Navbar Brand -->
+      <a class="navbar-item has-text-weight-bold server-name" href="./"></a>
+      <!-- End Navbar Brand -->
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+          data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+      </a>
+      </div>
+      <!-- Start Navbar Menu -->
+      <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+          <a href="./" class="navbar-item has-text-primary">
+          홈
+          </a>
+          <a href="./game" class="navbar-item">
+          서버
+          </a>
+          <a href="./store" class="navbar-item">
+          리더보드
+          </a>
+          <a href="./rank" class="navbar-item">
+          등급
+          </a>
+          <a href="./forums" class="navbar-item">
+          후원안내
+          </a>
+          <a href="./discord" class="navbar-item" target="_blank">
+          Discord
+          </a>
+      </div>
+      <!-- Start Navbar End -->
+      <div class="navbar-end">
+          <a id="ip-button" class="navbar-item">
+          <strong class="has-text-primary server-ip"></strong>
+          </a>
+      </div>
+      <!-- End Navbar End -->
+      </div>
+      <!-- End Navbar Menu -->
+  </div>
+  </nav>
+  <!-- End Navbar -->
 
   <!-- Start Hero -->
   <section class="hero has-background-image is-medium">
@@ -78,15 +141,39 @@
             <!-- Start Card 3 -->
             <div class="card has-large-margin-top">
               <div class="card-content">
-                <img src="./images/iron_sword.png" style="max-width: 100vh">
+                <img src="./images/diamond.png" style="max-width: 100vh">
                 <div class="content">
-                  <h3>Battle Royal</h3>
-                  <p>모든 플레이어에게 동일하게 주어지는 밀치기 막대기로 다른 플레이어들을 플롯 밖으로 떨어뜨리고<br>최후에 살아남는 사람이 승리합니다!<br>제한시간이 얼마 남지 않았을 경우 사이드 플롯이 사라집니다.</p>
-                  <p>- 게임 진행 : 1~2분</p>
+                  <h3>DiamondGrab</h3>
+                  <p>3인으로 이루어진 팀원들과 함께 다이아몬드 10개를 수집하세요!<br>카운트다운까지 버텨내면 승리합니다!<br>포지션 별 직업도 나뉘어져 있으며, 잘 이용해서 조합을 만들어 볼 수 있습니다.</p>
+                  <p>- 게임 진행 : 2~3분</p>
                 </div>
               </div>
             </div>
             <!-- End Card 3 -->
+
+            <!-- Start Card 4 -->
+            <div class="card has-large-margin-top">
+              <div class="card-content">
+                <img src="./images/icon_chestplate.png" style="max-width: 100vh">
+                <div class="content">
+                  <h3>Infinite PvP</h3>
+                  <p>인원 제한 없이 끝나지 않는 PvP를 즐겨보세요!<br>Infinite PvP의 랭킹 포인트인 IPP를 수집해 랭커에 도전해보세요!</p>
+                </div>
+              </div>
+            </div>
+            <!-- End Card 4 -->
+
+            <!-- Start Card 4 -->
+            <div class="card has-large-margin-top">
+              <div class="card-content">
+                <img src="./images/fishing_rod.png" style="max-width: 100vh">
+                <div class="content">
+                  <h3>낚시</h3>
+                  <p>PvP에 지친 분들을 위해, 혼자서도 플레이 가능한 낚시를 준비했습니다.<br>낚싯대를 계속 업그레이드 해 가장 좋은 효율의 낚싯대를 만드세요!</p>
+                </div>
+              </div>
+            </div>
+            <!-- End Card 4 -->
 
           </div>
           <!-- End Column 1 -->
@@ -97,39 +184,23 @@
   </section>
   <!-- End Gamemodes Section  -->
 
-  <!-- Start Help Modal -->
-  <div id="helpModal" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <!-- Start Help Modal Title -->
-        <p class="modal-card-title">How to join <span class="server-name"></span></p>
-        <button id="closeHelpModal2" class="delete" aria-label="close"></button>
-        <!-- End Help Modal Title -->
-      </header>
-      <section class="modal-card-body">
-        <div class="content">
-          <!-- Start Help Modal Content -->
-          <p><strong>Step 1.</strong> open Minecraft and click on "Multiplayer"</p>
-          <p><strong>Step 2.</strong> in the Multiplayer section, click on "add server"</p>
-          <p><strong>Step 2.</strong> set a name, for example "<span class="server-name"></span>" and in the ip field
-            enter "<span class="server-ip"></span>". Finally, click "done" to enter our server to your server list.</p>
-          <p><strong>Step 4.</strong> click on the server you just added and click on "Join Server"</p>
-        </div>
-        <!-- End Help Modal Content -->
-      </section>
-      <footer class="modal-card-foot">
-        <!-- Start Help Modal Close Button -->
-        <button id="closeHelpModal" class="button is-danger">Close</button>
-        <!-- End Help Modal Close Button -->
-      </footer>
-    </div>
-  </div>
-  <!-- End Help Modal -->
 
-  <?php
-    include '../includes/footer.php';
-  ?>
+  <footer id="setup-footer" class="footer">
+    <div class="content has-text-centered">
+        <p>
+        <strong>RedLime &copy; 2020-2021 &mdash; All rights
+            reserved
+        </strong>
+        <br>
+        <small>
+            <span class="server-name"></span>
+            server is in no way affiliated with Mojang, AB.</small>
+        </p>
+        <a href="./discord" target="_blank">
+        <img width="180" src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" alt="Discord Logo">
+        </a>
+    </div>
+  </footer>
 
 </body>
 
