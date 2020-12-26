@@ -11,11 +11,11 @@ getServerStatus = (async () => {
 	}
 	`).then(e =>e.json()).catch(e =>console.error(e))
 }),
-
+/*
 document.getElementById("ip-button").addEventListener("click",() => {
 	prompt("서버 주소를 복사하세요:",SERVER_IP)
 }),
-
+*/
 document.addEventListener("DOMContentLoaded",async () => {
 	const e = await getServerStatus(SERVER_IP),t = document.getElementById("server-online-count");
 	null !== t && (e && e.players ? t.innerHTML = e.players.online.toLocaleString():(t.innerHTML = "offline",t.classList.add("is-danger"),t.classList.add("is-white"),console.warn("If you're seeing this,your server on "+SERVER_IP+" could not be reached or it did not return valid data.")))
