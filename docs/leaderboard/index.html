@@ -24,7 +24,9 @@
   <link rel="stylesheet" href="./assets/css/bulma.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/custom.css">
   <script src="./assets/js/app.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <!-- Start Title -->
   <title>RLNetwork &mdash; 서버</title> <!-- EDIT THIS ONE -->
@@ -87,13 +89,13 @@
       <div class="container has-text-centered">
         <!-- Start Hero Title -->
         <p class="title is-1 has-text-white">
-          서버
+          리더보드
         </p>
         <!-- End Hero Title -->
 
         <!-- Start Hero Subtitle -->
         <p class="subtitle has-text-white">
-          서버의 컨텐츠들을 모아둔 곳입니다.
+          RLNetwork의 리더보드입니다!
         </p>
         <!-- End Hero Subtitle -->
       </div>
@@ -105,15 +107,35 @@
   <section class="section is-medium">
     <div class="container">
       <div class="content">
+        <!-- Start Row -->
+        <div class="columns">
+
+          <!-- Start Button 1 -->
+          <div class="column">
+            <a id="leaderboard-ipp" class="button is-selected is-fullwidth">IPP 순위 (Infinite PvP)</a>
+          </div>
+          <!-- End Button 1 -->
+
+          <!-- Start Button 2 -->
+          <div class="column">
+            <a class="button is-primary is-fullwidth" href="#">준비중입니다 ...</a>
+          </div>
+
+        </div>
+        <!-- End Row -->
+
+        
+        <!-- Start Row -->
+        <div id="leaderboard" class="columns">
+
+          <!-- Start Column 1 -->
+          <div class="column is-two-thirds">
 
             <!-- Start Card 1 -->
             <div class="card">
               <div class="card-content">
-                <img src="./images/DebugStick.gif" style="max-width: 100vh">
                 <div class="content">
-                  <h3>Stick Fight</h3>
-                  <p>모든 플레이어에게 동일하게 주어지는 밀치기 막대기로 다른 플레이어들을 플롯 밖으로 떨어뜨리고 최후에 살아남는 사람이 승리합니다!<br>제한시간이 얼마 남지 않았을 경우 사이드 플롯이 사라집니다.</p>
-                  <p>- 게임 진행 : 1~2분</p>
+                  <span class="has-text-left"><big><strong>1. </strong></big> <img class="text-img" src="https://www.mc-heads.net/avatar/3299d57311c5493590f1d28abf4aacb2/150"> daisy1348</span><span class="has-text-right is-fullwidth">1200 IPP</span>
                 </div>
               </div>
             </div>
@@ -122,11 +144,12 @@
             <!-- Start Card 2 -->
             <div class="card has-large-margin-top">
               <div class="card-content">
-                <img src="./images/iron_sword.png" style="max-width: 100vh">
                 <div class="content">
-                  <h3>Battle Royal</h3>
-                  <p>플레이어들이 흩어지고, 바닥에 떨어지는 아이템을 파밍해 다른 플레이어들을 처치하세요. 최후에 살아남는 사람이 승리합니다!<br>시간이 지날수록 월드보더가 점점 줄어듭니다!</p>
-                  <p>- 게임 진행 : 3~5분</p>
+                  <h3>Factions</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt justo sed massa
+                    tincidunt ultricies. Proin vitae facilisis risus, eget cursus purus. In lectus odio, dictum id erat
+                    id, interdum convallis odio. Proin mattis, tellus vitae tristique posuere, purus mi rutrum dolor,
+                    quis auctor erat enim ut sapien</p>
                 </div>
               </div>
             </div>
@@ -135,44 +158,75 @@
             <!-- Start Card 3 -->
             <div class="card has-large-margin-top">
               <div class="card-content">
-                <img src="./images/diamond.png" style="max-width: 100vh">
                 <div class="content">
-                  <h3>DiamondGrab</h3>
-                  <p>3인으로 이루어진 팀원들과 함께 다이아몬드 10개를 수집하세요! 카운트다운까지 버텨내면 승리합니다!<br>포지션 별 직업도 나뉘어져 있으며, 잘 이용해서 조합을 만들어 볼 수 있습니다.</p>
-                  <p>- 게임 진행 : 2~3분</p>
+                  <h3>KitPvP</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt justo sed massa
+                    tincidunt ultricies. Proin vitae facilisis risus, eget cursus purus. In lectus odio, dictum id erat
+                    id, interdum convallis odio. Proin mattis, tellus vitae tristique posuere, purus mi rutrum dolor,
+                    quis auctor erat enim ut sapien</p>
                 </div>
               </div>
             </div>
             <!-- End Card 3 -->
 
-            <!-- Start Card 4 -->
-            <div class="card has-large-margin-top">
-              <div class="card-content">
-                <img src="./images/iron_chestplate.png" style="max-width: 100vh">
-                <div class="content">
-                  <h3>Infinite PvP</h3>
-                  <p>인원 제한 없이 끝나지 않는 PvP를 즐겨보세요! Infinite PvP의 랭킹 포인트인 IPP를 수집해 랭커에 도전해보세요!</p>
-                </div>
-              </div>
-            </div>
-            <!-- End Card 4 -->
+            <!-- End Column 1 -->
+          </div>
 
-            <!-- Start Card 4 -->
-            <div class="card has-large-margin-top">
+          <!-- Start Column 2 -->
+          <div class="column">
+
+            <!-- Start Card 1 -->
+            <div class="card">
               <div class="card-content">
-                <img src="./images/fishing_rod.png" style="max-width: 100vh">
                 <div class="content">
-                  <h3>낚시</h3>
-                  <p>PvP에 지친 분들을 위해, 혼자서도 플레이 가능한 낚시를 준비했습니다. 낚싯대를 계속 업그레이드 해 가장 좋은 효율의 낚싯대를 만드세요!</p>
+                  <h3>I need help with joining</h3>
+                  <p>Use <span class="server-ip"></span> to join our server.<br></p>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt justo sed massa
+                    tincidunt ultricies. Proin vitae facilisis risus, eget cursus purus.</p>
+                  <button id="helpModalButton" class="button is-primary is-fullwidth" href="">Still need help?</a>
                 </div>
               </div>
             </div>
-            <!-- End Card 4 -->
+            <!-- Start Card 1 -->
+          </div>
+          <!-- End Column 2 -->
+        </div>
+        <!-- End Row -->
       </div>
     </div>
   </section>
   <!-- End Gamemodes Section  -->
 
+
+  <!-- Start Help Modal -->
+  <div id="helpModal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <!-- Start Help Modal Title -->
+        <p class="modal-card-title">How to join <span class="server-name"></span></p>
+        <button id="closeHelpModal2" class="delete" aria-label="close"></button>
+        <!-- End Help Modal Title -->
+      </header>
+      <section class="modal-card-body">
+        <div class="content">
+          <!-- Start Help Modal Content -->
+          <p><strong>Step 1.</strong> open Minecraft and click on "Multiplayer"</p>
+          <p><strong>Step 2.</strong> in the Multiplayer section, click on "add server"</p>
+          <p><strong>Step 2.</strong> set a name, for example "<span class="server-name"></span>" and in the ip field
+            enter "<span class="server-ip"></span>". Finally, click "done" to enter our server to your server list.</p>
+          <p><strong>Step 4.</strong> click on the server you just added and click on "Join Server"</p>
+        </div>
+        <!-- End Help Modal Content -->
+      </section>
+      <footer class="modal-card-foot">
+        <!-- Start Help Modal Close Button -->
+        <button id="closeHelpModal" class="button is-danger">Close</button>
+        <!-- End Help Modal Close Button -->
+      </footer>
+    </div>
+  </div>
+  <!-- End Help Modal -->
 
   <footer id="setup-footer" class="footer">
     <div class="content has-text-centered">
@@ -191,6 +245,12 @@
     </div>
   </footer>
 
+  <script>
+    var loadScore = 0;
+    function getData(target) {
+      
+    }
+  </script>
 </body>
 
 </html>
