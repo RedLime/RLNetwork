@@ -126,18 +126,20 @@
 
         
         <!-- Start Row -->
-        <div id="leaderboard" class="columns">
+        <div class="columns">
 
           <!-- Start Column 1 -->
-          <div class="column is-two-thirds">
+          <div id="leaderboard" class="column is-two-thirds">
 
             <!-- Start Card 1 -->
             <div class="card">
-              <div class="card-content">
-                <div class="content">
-                  <span class="has-text-left"><big><strong>1. </strong></big> <img class="text-img" src="https://www.mc-heads.net/avatar/3299d57311c5493590f1d28abf4aacb2/150"> daisy1348</span><span class="has-text-right is-fullwidth">1200 IPP</span>
+              <a class="is-fullwidth has-text-black">
+                <div class="card-content" style="padding: 1rem;">
+                  <div class="content columns" style="font-size: 1.3em;">
+                    <span class="has-text-left column"><big><strong>1. </strong></big> <img class="text-img" src="https://www.mc-heads.net/avatar/3299d57311c5493590f1d28abf4aacb2/150"> daisy1348</span><span class="has-text-right column">1200 IPP</span>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
             <!-- End Card 1 -->
 
@@ -247,9 +249,19 @@
 
   <script>
     var loadScore = 0;
-    function getData(target) {
-      
+    function getData(target, page) {
+      $.ajax(
+        { url: "http://redlimerl.kro.kr/rlnetwork/api/v1/"+target+".php", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+        data: { page: page }, // HTTP 요청과 함께 서버로 보낼 데이터
+        method: "GET", // HTTP 요청 메소드(GET, POST 등)
+        dataType: "json" // 서버에서 보내줄 데이터의 타입
+      }) // HTTP 요청이 성공하면 요청한 데이터가done() 메소드로 전달됨.
+      .done(function(json) { 
+        console.log(json);
+        $("#leaderboard").append();
+      })
     }
+    getData("ipp_leaderboard", 1);
   </script>
 </body>
 
