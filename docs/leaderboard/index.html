@@ -255,7 +255,7 @@
         url: "https://redlimerl.com/rlnetwork/api/v1/"+target+".php", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
         data: { page: page }, // HTTP 요청과 함께 서버로 보낼 데이터
         method: "GET", // HTTP 요청 메소드(GET, POST 등)
-        dataType: "json", // 서버에서 보내줄 데이터의 타입
+        dataType: "jsonp", // 서버에서 보내줄 데이터의 타입
         crossOrigin : true,
       }) // HTTP 요청이 성공하면 요청한 데이터가done() 메소드로 전달됨.
       .done(function(json) { 
