@@ -128,7 +128,6 @@
 
             <!-- End Column 1 -->
           </div>
-          <a id="leaderboard-more" class="button card is-primary is-fullwidth">더보기</a>
 
           <!-- Start Column 2 -->
           <div class="column">
@@ -225,6 +224,7 @@
               `<span class="has-text-left column"><big><strong>${element.rank}. </strong></big> <img class="text-img" style="image-rendering: pixelated;" src="https://www.mc-heads.net/avatar/${u}/160"> ${element.nickname}</span>`+
               typeCase(target, element) + `</div></div></a></div>`);
             });
+            $("#leaderboard").append(page<5 ? `<a id="leaderboard-more" class="button card is-primary is-fullwidth">더보기</a>` : ``);
           }
         }
       })
@@ -259,6 +259,7 @@
         $("#userInfo").removeClass("is-active")
       })
       $(document).on("click", "#leaderboard-more", function() {
+        $("#leaderboard-more").remove();
         if (nowPage < 5) getData(nowMode, nowPage+1);
       })
     });
