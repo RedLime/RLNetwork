@@ -1,0 +1,237 @@
+<!--
+
+ Hi! Thanks for downloading this template!
+ Before you start editing, please read the docs if you're in inexperienced.
+
+ Basic knowledge of HTML, CSS and Javascript is recommended.
+ However, by reading the docs editing won't be to hard for inexperienced people.
+
+ If you like this resource please rate it on Spigot!
+
+ PLEASE NOTE:
+ You can change SERVER_NAME and SERVER_IP in /assets/js/app.js
+
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <base href="https://redlime.github.io/rlnetwork/">
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="RLNetwork" /> <!-- EDIT THIS ONE -->
+  <meta property="og:site_name" content="RLNetwork" /> <!-- EDIT THIS ONE -->
+  <meta property="og:type" content="website" /> <!-- EDIT THIS ONE -->
+  <meta property="og:url" content="https://redlime.github.io/rlnetwork/" /> <!-- EDIT THIS ONE -->
+  <meta property="og:description" content="RLNetwork의 공식 사이트입니다." /> <!-- EDIT THIS ONE -->
+  <meta property="og:image" content="./images/icon.png" /> <!-- EDIT THIS ONE -->
+  <link rel="shortcut icon" href="./favicon.ico">
+  
+  <!-- End Required Meta Tags -->
+  
+  <!-- Start Required Links -->
+  
+  <!-- https://fontawesome.com/ -->
+  <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+  <!-- https://bulma.io/ -->
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/custom.css">
+  <script src="./assets/js/app.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Start Title -->
+  <title>RLNetwork &mdash; 서버</title> <!-- EDIT THIS ONE -->
+  <!-- End Title -->
+</head>
+
+<body>
+<!-- Start Navbar -->
+<nav id="navbar" class="navbar fixed is-transparent" role="navigation" aria-label="main navigation">
+  <div class="container">
+      <div class="navbar-brand">
+      <!-- Start Navbar Brand -->
+      <a class="navbar-item has-text-weight-bold server-name" href="./"></a>
+      <!-- End Navbar Brand -->
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+          data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+      </a>
+      </div>
+      <!-- Start Navbar Menu -->
+      <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+          <a href="./" class="navbar-item">
+          홈
+          </a>
+          <a href="./game" class="navbar-item">
+          서버
+          </a>
+          <a href="./store" class="navbar-item">
+          리더보드
+          </a>
+          <a href="./rank" class="navbar-item has-text-primary">
+          등급
+          </a>
+          <a href="./forums" class="navbar-item">
+          후원안내
+          </a>
+          <a href="./discord" class="navbar-item" target="_blank">
+          Discord
+          </a>
+      </div>
+      <!-- Start Navbar End -->
+      <div class="navbar-end">
+          <a id="ip-button" class="navbar-item">
+          <strong class="has-text-primary server-ip"></strong>
+          </a>
+      </div>
+      <!-- End Navbar End -->
+      </div>
+      <!-- End Navbar Menu -->
+  </div>
+</nav>
+<!-- End Navbar -->
+
+  <!-- Start Hero -->
+  <section class="hero has-background-image is-medium">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <!-- Start Hero Title -->
+        <p class="title is-1 has-text-white">
+          등급 안내
+        </p>
+        <!-- End Hero Title -->
+
+        <!-- Start Hero Subtitle -->
+        <p class="subtitle has-text-white">
+          <span class="server-name"></span>의 등급들에 대한 안내 페이지입니다!
+        </p>
+        <!-- End Hero Subtitle -->
+      </div>
+    </div>
+  </section>
+  <!-- End Hero -->
+
+  <!--  Start Gamemodes Section -->
+  <section class="section is-medium">
+    <div class="container">
+
+        <!-- Start Row -->
+        <div class="columns">
+          <!-- Start Column 1 -->
+          <div class="column is-two-thirds">
+
+            <div class="card" style="margin: 1.25em">
+              <div class="card-content">
+                <div class="content">
+                  <h3>Admin</h3>
+                  <p>이 서버를 총관리/운영하는 운영진에게 지급합니다.</p>
+                  <p>규칙을 위반하는 유저에게 처벌을 가할 수 있습니다.</p>
+                  <p>- 조건 비공개</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin: 1.25em">
+              <div class="card-content">
+                <div class="content">
+                  <h3>Helper</h3>
+                  <p>이 서버의 유저들을 관리하는 유저 관리자에게 지급합니다.</p>
+                  <p>규칙을 위반하는 유저에게 처벌을 가할 수 있습니다.</p>
+                  <p>- 조건 비공개</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin: 1.25em">
+              <div class="card-content">
+                <div class="content">
+                  <h3>Builder</h3>
+                  <p>이 서버에서 사용되는 맵을 제작/관리하는 건축가에게 지급합니다.</p>
+                  <p>제작한 맵이 서버에 적용되어, 플레이어들이 플레이 할 수 있도록 합니다.</p>
+                  <p>- 조건 : 공개 모집 후 심사</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin: 1.25em">
+              <div class="card-content">
+                <div class="content">
+                  <h3>Youtuber</h3>
+                  <p>이 서버에서 사용되는 맵을 제작/관리하는 건축가에게 지급합니다.</p>
+                  <p>제작한 맵이 서버에 적용되어, 플레이어들이 플레이 할 수 있도록 합니다.</p>
+                  <p>- 조건 : 구독자 2000명 이상의 유튜브 채널 보유</p>
+                  <p>- 조건 : 해당 채널에 <span class="server-name"></span>에 대한 영상/스트리밍 3회 이상 업로드</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card" style="margin: 1.25em">
+              <div class="card-content">
+                <div class="content">
+                  <h3>Partner</h3>
+                  <p><span class="server-name"></span>과 파트너를 맺은 서버의 어드민에게 부여하는 등급입니다.</p>
+                  <p>- 조건 : 상호 합의 파트너 서버 체결</p>
+                </div>
+              </div>
+            </div>
+        
+            <div class="card" style="margin: 1.25em">
+              <div class="card-content">
+                <div class="content">
+                  <h3>후원 등급</h3>
+                  <a class="button is-primary" href="./donate" target="_blank">바로 이동</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- End Column 1 -->
+          </div>
+          <div class="column">
+            <div class="card">
+              <div class="card-content">
+                <div class="content">
+                  <h3>해당하는 등급이 있으신가요? 궁금한게 있으신가요?</h3>
+                  <p>조건에 충족하는 등급이 있으시다면 혹은 문의하고 싶은게 있으시다면<br></p>
+                  <p>Discord RedLime#0817이나 아래의 디스코드 서버로 이동하세요.</p>
+                  <a class="button is-primary" href="./discord" target="_blank">Discord Server</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Row -->
+
+        
+        <br>
+      </div>
+    </div>
+  </section>
+  <!-- End Gamemodes Section  -->
+
+  <footer id="setup-footer" class="footer">
+    <div class="content has-text-centered">
+        <p>
+        <strong>RedLime &copy; 2020-2021 &mdash; All rights
+            reserved
+        </strong>
+        <br>
+        <small>
+            <span class="server-name"></span>
+            server is in no way affiliated with Mojang, AB.</small>
+        </p>
+        <a href="./discord" target="_blank">
+        <img width="180" src="https://discordapp.com/assets/fc0b01fe10a0b8c602fb0106d8189d9b.png" alt="Discord Logo">
+        </a>
+    </div>
+  </footer>
+
+</body>
+
+</html>

@@ -34,7 +34,7 @@
 </head>
 
 <body>
-  <!-- Start Navbar -->
+<!-- Start Navbar -->
 <nav id="navbar" class="navbar fixed is-transparent" role="navigation" aria-label="main navigation">
   <div class="container">
       <div class="navbar-brand">
@@ -54,10 +54,10 @@
           <a href="./" class="navbar-item">
           홈
           </a>
-          <a href="./game" class="navbar-item has-text-primary">
+          <a href="./game" class="navbar-item">
           서버
           </a>
-          <a href="./store" class="navbar-item">
+          <a href="./store" class="navbar-item has-text-primary">
           리더보드
           </a>
           <a href="./rank" class="navbar-item">
@@ -80,8 +80,8 @@
       </div>
       <!-- End Navbar Menu -->
   </div>
-  </nav>
-  <!-- End Navbar -->
+</nav>
+<!-- End Navbar -->
 
   <!-- Start Hero -->
   <section class="hero has-background-image is-medium">
@@ -136,8 +136,9 @@
             <div class="card">
               <div class="card-content">
                 <div class="content">
-                  <a id="leaderboard-ipp" class="button is-selected is-fullwidth">IPP 순위 (Infinite PvP)</a>
-                  <a class="button is-primary is-fullwidth" href="#">준비중입니다 ...</a>
+                  <a id="leaderboard-level" class="button card is-fullwidth" style="margin-top: 0.5em; margin-bottom: 0.5em;">전체 레벨 순위</a>
+                  <a id="leaderboard-ipp" class="button card is-primary is-fullwidth" style="margin-top: 0.5em; margin-bottom: 0.5em;">IPP 순위 (Infinite PvP)</a>
+                  <a class="button card is-primary is-fullwidth" href="#">준비중입니다 ...</a>
                 </div>
               </div>
             </div>
@@ -165,17 +166,16 @@
       <section class="modal-card-body">
         <div class="content">
           <!-- Start Help Modal Content -->
-          <p><strong>Step 1.</strong> open Minecraft and click on "Multiplayer"</p>
-          <p><strong>Step 2.</strong> in the Multiplayer section, click on "add server"</p>
-          <p><strong>Step 2.</strong> set a name, for example "<span class="server-name"></span>" and in the ip field
-            enter "<span class="server-ip"></span>". Finally, click "done" to enter our server to your server list.</p>
-          <p><strong>Step 4.</strong> click on the server you just added and click on "Join Server"</p>
+          <p id="user-profile-rank"></p>
+          <p id="user-profile-level"></p>
+          <p id="user-profile-coin"></p>
+          <p id="user-profile-playtime"></p>
         </div>
         <!-- End Help Modal Content -->
       </section>
       <footer class="modal-card-foot">
         <!-- Start Help Modal Close Button -->
-        <button id="closeUserInfo" class="button is-danger">Close</button>
+        <button id="closeUserInfo" class="button is-danger">닫기</button>
         <!-- End Help Modal Close Button -->
       </footer>
     </div>
@@ -202,29 +202,50 @@
   <script>
     var loadScore = 0;
     function getData(target, page) {
+      var time = ++loadScore;
+      if (page == 1) $("#leaderboard").html("");
+
       $.ajax({
-        url: "https://redlimerl.com/rlnetwork/api/v1/"+target+".php", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
-        data: { page: page }, // HTTP 요청과 함께 서버로 보낼 데이터
-        method: "GET", // HTTP 요청 메소드(GET, POST 등)
-        dataType: "json", // 서버에서 보내줄 데이터의 타입
-      }) // HTTP 요청이 성공하면 요청한 데이터가done() 메소드로 전달됨.
+        url: "https://redlimerl.com/rlnetwork/api/v1/"+target+".php",
+        data: { page: page },
+        method: "GET",
+        dataType: "json", 
+      })
       .done(function(json) { 
-        console.log(json);
-        if (json.code == 200) {
-          json.data.forEach(element => {
-            var u = element.uuid.toString();
-            $("#leaderboard").append(`<div class="card userInfoButton"><a class="is-fullwidth has-text-black"><div class="card-content" style="padding: 1rem;"><div class="content columns" style="font-size: 1.3em;">`+
-            `<span class="has-text-left column"><big><strong>${element.rank}. </strong></big> <img class="text-img" src="https://www.mc-heads.net/avatar/${u}/150"> ${element.nickname}</span>`+
-            `<span class="has-text-right column">${element.score} IPP</span></div></div></a></div>`);
-          });
+        if (time == loadScore) {
+          if (json.code == 200) {
+            json.data.forEach(element => {
+              var u = element.uuid.toString();
+              $("#leaderboard").append(`<div class="card userInfoButton"><a class="is-fullwidth has-text-black" onclick="loadProfile('${u}')"><div class="card-content" style="padding: 1rem;"><div class="content columns" style="font-size: 1.3em;">`+
+              `<span class="has-text-left column"><big><strong>${element.rank}. </strong></big> <img class="text-img" style="image-rendering: pixelated;" src="https://www.mc-heads.net/avatar/${u}/160"> ${element.nickname}</span>`+
+              typeCase(target, element) + `</div></div></a></div>`);
+            });
+          }
         }
       })
     }
-    getData("ipp_leaderboard", 1);
+
+    function typeCase(target, element) {
+      if (target == "level_leaderboard") {
+        return `<span class="has-text-right column">${element.level} Level <small><small>/ ${element.exp} exp</small></small></span>`
+      }
+      if (target == "ipp_leaderboard") {
+        return `<span class="has-text-right column">${element.score} IPP</span>`
+      }
+      return ``
+    }
+    getData("level_leaderboard", 1);
 
     $(document).ready(function () {
-      $(document).on("click", ".userInfoButton", function() {
-        $("#userInfo").addClass("is-active")
+      $(document).on("click", "#leaderboard-level", function() {
+        getData("level_leaderboard", 1);
+        $("#leaderboard-ipp").addClass("is-primary")
+        $("#leaderboard-level").removeClass("is-primary")
+      })
+      $(document).on("click", "#leaderboard-ipp", function() {
+        getData("ipp_leaderboard", 1);
+        $("#leaderboard-level").addClass("is-primary")
+        $("#leaderboard-ipp").removeClass("is-primary")
       })
       $(document).on("click", "#closeUserInfo", function() {
         $("#userInfo").removeClass("is-active")
@@ -233,6 +254,46 @@
         $("#userInfo").removeClass("is-active")
       })
     });
+    
+    function loadProfile(uuid) {
+      $("#userInfo").addClass("is-active");
+      $(".modal-card-title").html("불러오는 중...");
+      $("#user-profile-rank").html(``);
+      $("#user-profile-level").html(``);
+      $("#user-profile-coin").html(``);
+      $("#user-profile-playtime").html(``);
+      $.ajax({
+        url: "https://redlimerl.com/rlnetwork/api/v1/user_profile.php",
+        data: { uuid: uuid },
+        method: "GET",
+        dataType: "json", 
+      })
+      .done(function(json) { 
+        if (json.code == 200) {
+          var user = json.data;
+          $(".modal-card-title").html(`<img class="text-img" style="image-rendering: pixelated;" src="https://www.mc-heads.net/avatar/${uuid}/160"> `+user.nickname+"님의 정보");
+          $("#user-profile-rank").html(`<big>등급 : </big>${user.grade}`);
+          $("#user-profile-level").html(`<big>레벨 : </big>${user.level} Level <small>/ ${user.exp} exp</small> (#${user.rank})`);
+          $("#user-profile-coin").html(`<big>보유중인 코인 : </big>${user.coins}`);
+          $("#user-profile-playtime").html(`<big>플레이타임 : </big>${time(user.playtime)}`);
+        }
+      })
+    }
+
+    function time(a) {
+      var sec_num = parseInt(a, 10); // don't forget the second param
+      var hours   = Math.floor(sec_num / 3600);
+      var days   = Math.floor(hours / 24);
+      var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+      var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+      if (days   < 10) {days   = "0"+days;}
+      if (hours   < 10) {hours   = "0"+hours;}
+      if (minutes < 10) {minutes = "0"+minutes;}
+      if (seconds < 10) {seconds = "0"+seconds;}
+      
+      return days+'일 '+hours+'시간 '+minutes+'분';
+    }
   </script>
 </body>
 
