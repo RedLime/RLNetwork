@@ -58,18 +58,6 @@ document.addEventListener("DOMContentLoaded",() => {
 }),
 
 
-$(function(){
-	$(".userInfoButton").on("click", "a", function() {
-		$("#userInfo").addClass("is-active")
-	})
-	$("#closeUserInfo").on("click", "a", function() {
-		$("#userInfo").removeClass("is-active")
-	})
-	$("#closeUserInfo2").on("click", "a", function() {
-		$("#userInfo").removeClass("is-active")
-	})
-});
-
 document.addEventListener("DOMContentLoaded",() => {
 	const e = document.getElementById("helpModal"),t = document.getElementById("helpModalButton"),n = document.getElementById("closeHelpModal"),s = document.getElementById("closeHelpModal2");
 	e && (t.addEventListener("click",() => {

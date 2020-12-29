@@ -221,6 +221,18 @@
       })
     }
     getData("ipp_leaderboard", 1);
+
+    $(document).ready(function () {
+      $(document).on("click", ".userInfoButton", function() {
+        $("#userInfo").addClass("is-active")
+      })
+      $(document).on("click", "#closeUserInfo", function() {
+        $("#userInfo").removeClass("is-active")
+      })
+      $(document).on("click", "#closeUserInfo2", function() {
+        $("#userInfo").removeClass("is-active")
+      })
+    });
   </script>
 </body>
 
