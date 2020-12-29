@@ -59,13 +59,13 @@ document.addEventListener("DOMContentLoaded",() => {
 
 
 $(function(){
-	$(".userInfoButton").click(function() {
+	$(".userInfoButton").on("click", "a", function() {
 		$("#userInfo").addClass("is-active")
 	})
-	$("#closeUserInfo").click(function() {
+	$("#closeUserInfo").on("click", "a", function() {
 		$("#userInfo").removeClass("is-active")
 	})
-	$("#closeUserInfo2").click(function() {
+	$("#closeUserInfo2").on("click", "a", function() {
 		$("#userInfo").removeClass("is-active")
 	})
 });
