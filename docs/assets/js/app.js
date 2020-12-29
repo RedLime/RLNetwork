@@ -57,6 +57,33 @@ document.addEventListener("DOMContentLoaded",() => {
 	))
 }),
 
+
+$(function(){
+	$(".userInfoButton").click(function() {
+		$("#userInfo").addClass("is-active")
+	})
+	$("#closeUserInfo").click(function() {
+		$("#userInfo").removeClass("is-active")
+	})
+	$("#closeUserInfo2").click(function() {
+		$("#userInfo").removeClass("is-active")
+	})
+});
+
+document.addEventListener("DOMContentLoaded",() => {
+	const e = document.getElementById("helpModal"),t = document.getElementById("helpModalButton"),n = document.getElementById("closeHelpModal"),s = document.getElementById("closeHelpModal2");
+	e && (t.addEventListener("click",() => {
+		e.classList.add("is-active")
+	}
+	),n.addEventListener("click",() => {
+		e.classList.remove("is-active")
+	}
+	),s.addEventListener("click",() => {
+		e.classList.remove("is-active")
+	}
+	))
+}),
+
 window.addEventListener("scroll",() => {
 	const e = document.getElementById("navbar");
 	0 == window.scrollY ? (e.classList.remove("has-shadow","is-white"),e.classList.add("is-transparent")): window.scrollY>= 25 && (e.classList.add("has-shadow","is-white"),e.classList.remove("is-transparent"))

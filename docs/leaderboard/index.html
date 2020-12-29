@@ -108,31 +108,14 @@
   <section class="section is-medium">
     <div class="container">
       <div class="content">
-        <!-- Start Row -->
-        <div class="columns">
 
-          <!-- Start Button 1 -->
-          <div class="column">
-            <a id="leaderboard-ipp" class="button is-selected is-fullwidth">IPP 순위 (Infinite PvP)</a>
-          </div>
-          <!-- End Button 1 -->
-
-          <!-- Start Button 2 -->
-          <div class="column">
-            <a class="button is-primary is-fullwidth" href="#">준비중입니다 ...</a>
-          </div>
-
-        </div>
-        <!-- End Row -->
-
-        
         <!-- Start Row -->
         <div class="columns">
 
           <!-- Start Column 1 -->
           <div id="leaderboard" class="column is-two-thirds">
 
-            <!-- Start Card 1 -->
+            <!-- Start Card 1
             <div class="card">
               <a class="is-fullwidth has-text-black">
                 <div class="card-content" style="padding: 1rem;">
@@ -142,35 +125,7 @@
                 </div>
               </a>
             </div>
-            <!-- End Card 1 -->
-
-            <!-- Start Card 2 -->
-            <div class="card has-large-margin-top">
-              <div class="card-content">
-                <div class="content">
-                  <h3>Factions</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt justo sed massa
-                    tincidunt ultricies. Proin vitae facilisis risus, eget cursus purus. In lectus odio, dictum id erat
-                    id, interdum convallis odio. Proin mattis, tellus vitae tristique posuere, purus mi rutrum dolor,
-                    quis auctor erat enim ut sapien</p>
-                </div>
-              </div>
-            </div>
-            <!-- End Card 2 -->
-
-            <!-- Start Card 3 -->
-            <div class="card has-large-margin-top">
-              <div class="card-content">
-                <div class="content">
-                  <h3>KitPvP</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt justo sed massa
-                    tincidunt ultricies. Proin vitae facilisis risus, eget cursus purus. In lectus odio, dictum id erat
-                    id, interdum convallis odio. Proin mattis, tellus vitae tristique posuere, purus mi rutrum dolor,
-                    quis auctor erat enim ut sapien</p>
-                </div>
-              </div>
-            </div>
-            <!-- End Card 3 -->
+            End Card 1 -->
 
             <!-- End Column 1 -->
           </div>
@@ -182,10 +137,8 @@
             <div class="card">
               <div class="card-content">
                 <div class="content">
-                  <h3>I need help with joining</h3>
-                  <p>Use <span class="server-ip"></span> to join our server.<br></p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt justo sed massa
-                    tincidunt ultricies. Proin vitae facilisis risus, eget cursus purus.</p>
+                  <a id="leaderboard-ipp" class="button is-selected is-fullwidth">IPP 순위 (Infinite PvP)</a>
+                  <a class="button is-primary is-fullwidth" href="#">준비중입니다 ...</a>
                   <button id="helpModalButton" class="button is-primary is-fullwidth" href="">Still need help?</a>
                 </div>
               </div>
@@ -202,13 +155,13 @@
 
 
   <!-- Start Help Modal -->
-  <div id="helpModal" class="modal">
+  <div id="userInfo" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
         <!-- Start Help Modal Title -->
         <p class="modal-card-title">How to join <span class="server-name"></span></p>
-        <button id="closeHelpModal2" class="delete" aria-label="close"></button>
+        <button id="closeUserInfo2" class="delete" aria-label="close"></button>
         <!-- End Help Modal Title -->
       </header>
       <section class="modal-card-body">
@@ -224,7 +177,7 @@
       </section>
       <footer class="modal-card-foot">
         <!-- Start Help Modal Close Button -->
-        <button id="closeHelpModal" class="button is-danger">Close</button>
+        <button id="closeUserInfo" class="button is-danger">Close</button>
         <!-- End Help Modal Close Button -->
       </footer>
     </div>
@@ -259,7 +212,14 @@
       }) // HTTP 요청이 성공하면 요청한 데이터가done() 메소드로 전달됨.
       .done(function(json) { 
         console.log(json);
-        $("#leaderboard").append();
+        if (json.code == 200) {
+          json.data.forEach(element => {
+            var u = element.uuid.toString();
+            $("#leaderboard").append(`<div class="card userInfoButton"><a class="is-fullwidth has-text-black"><div class="card-content" style="padding: 1rem;"><div class="content columns" style="font-size: 1.3em;">`+
+            `<span class="has-text-left column"><big><strong>${element.rank}. </strong></big> <img class="text-img" src="https://www.mc-heads.net/avatar/${u}/150"> ${element.nickname}</span>`+
+            `<span class="has-text-right column">${element.score} IPP</span></div></div></a></div>`);
+          });
+        }
       })
     }
     getData("ipp_leaderboard", 1);
