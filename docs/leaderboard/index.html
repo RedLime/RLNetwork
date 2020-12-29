@@ -128,6 +128,7 @@
 
             <!-- End Column 1 -->
           </div>
+          <a id="leaderboard-more" class="button card is-primary is-fullwidth">더보기</a>
 
           <!-- Start Column 2 -->
           <div class="column">
@@ -201,7 +202,11 @@
 
   <script>
     var loadScore = 0;
+    var nowMode = "";
+    var nowPage = 0;
     function getData(target, page) {
+      nowMode = target;
+      nowPage = page;
       var time = ++loadScore;
       if (page == 1) $("#leaderboard").html("");
 
@@ -252,6 +257,9 @@
       })
       $(document).on("click", "#closeUserInfo2", function() {
         $("#userInfo").removeClass("is-active")
+      })
+      $(document).on("click", "#leaderboard-more", function() {
+        if (nowPage < 5) getData(nowMode, nowPage+1);
       })
     });
     
