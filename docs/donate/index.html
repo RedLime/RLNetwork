@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="./assets/css/custom.css">
   <script src="./assets/js/app.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
   <!-- Start Title -->
   <title>RLNetwork &mdash; 서버</title> <!-- EDIT THIS ONE -->
@@ -129,6 +130,17 @@
       <br>
       <!-- End Support The Server Titles -->
       
+      <div class="card">
+        <div class="card-content">
+          <div class="content" style="font-size: 1.5em; vertical-align: sub;">
+            <span style="vertical-align: sub;">내 닉네임 : </span><input style="width: 75%; font-size: larger; vertical-align: text-top;" class="nickname" type="text" name="nickname" placeholder="여기에 닉네임을 입력하세요." maxlength="36">
+          </div>
+        </div>
+      </div>
+      
+      <br>
+      <br>
+
       <div class="content">
 
         <!-- Start Row -->
@@ -141,8 +153,8 @@
                 <div class="content">
                   <h3>Vip+</h3>
                   <p>준비 중입니다!</p>
-                  <h4>￦10,000</h4>
-                  <a class="button is-primary">soon</a>
+                  <h4>$9.5 <a class="has-text-danger" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%ED%99%98%EC%9C%A8+9.9%EB%8B%AC%EB%9F%AC" target="_blank">(약 ￦10,000)</a></h4>
+                  <a class="donate-purchase-vip-plus button is-primary">후원</a>
                 </div>
               </div>
             </div>
@@ -158,8 +170,8 @@
                   <p>- 하얀색 색상 닉네임 (탭 리스트, 채팅 적용)</p>
                   <p>- VIP 전용 로비 파티클 제공</p>
                   <p>- 공식 Discord 서버 VIP 역할 제공</p>
-                  <h4 class="has-text-white">￦5,000</h4>
-                  <a href="" class="button is-white">soon</a>
+                  <h4>$4.9 <a class="has-text-danger" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%ED%99%98%EC%9C%A8+4.9%EB%8B%AC%EB%9F%AC" target="_blank">(약 ￦5,000)</a></h4>
+                  <a class="donate-purchase-vip button is-white">후원</a>
                 </div>
               </div>
             </div>
@@ -173,8 +185,8 @@
                 <div class="content">
                   <h3>MVP</h3>
                   <p>준비 중입니다!</p>
-                  <h4>￦15,000</h4>
-                  <a class="button is-primary">soon</a>
+                  <h4>$14 <a class="has-text-danger" href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%ED%99%98%EC%9C%A8+4.9%EB%8B%AC%EB%9F%AC" target="_blank">(약 ￦15,000)</a></h4>
+                  <a class="donate-purchase-mvp button is-primary">후원</a>
                 </div>
               </div>
             </div>
@@ -182,6 +194,7 @@
           <!-- End Column 2 -->
         </div>
 
+        <br>
         <p>- 주의 사항 : 일반적으로 환불은 불가능하나, 만 14세 미만의 청소년이 (법적)대리인의 허가 없이 후원을 진행한 뒤, 법적대리인이 환불을 요청할 경우 전액 환불 가능합니다.</p>
         
         <!-- End Row -->
@@ -219,6 +232,66 @@
         </a>
     </div>
   </footer>
+
+
+  <script>
+    function sendPost(action, params) {
+      var form = document.createElement('form');
+      form.setAttribute('method', 'post'); //GET 전환 가능
+      form.setAttribute('action', action);
+      document.charset = "utf-8";
+      for ( var key in params) {
+          var hiddenField = document.createElement('input');
+          hiddenField.setAttribute('type', 'hidden'); //값 입력
+          hiddenField.setAttribute('name', key);
+          hiddenField.setAttribute('value', params[key]);
+          form.appendChild(hiddenField);
+      }
+      document.body.appendChild(form);
+      form.submit();
+    }
+
+    var url = new URL(window.location.href);
+    var c = url.searchParams;
+    if (c.get("purchase") != null) {
+      var result = c.get("purchase");
+      if (result == "success") {
+        Swal.fire(
+          '성공적으로 처리되었습니다!',
+          `${c.get("user")}님이 ${c.get("type")} 등급으로 업그레이드 되었습니다.\n서버에서 재접속 해보세요.`,
+          'success'
+        )
+      } else if (result == "error") {
+        Swal.fire(
+          '작업이 실패했습니다 :(',
+          `${c.get("message")}`,
+          'error'
+        )
+      }
+    }
+
+    $(document).ready(function () {
+      $(document).on("click", ".donate-purchase-vip", function() {
+        if ($(".nickname").val() == "") {
+          Swal.fire("제대로 입력하셨나요?", "등급을 적용시킬 유저를 입력해주세요.", "error"); return;
+        }
+        sendPost("https://redlimerl.com/rlnetwork/purchase/", { "type": "VIP", "user": $(".nickname").val(), "sandbox": "baba323300"});
+      })
+      $(document).on("click", ".donate-purchase-vip-plus", function() {
+        if ($(".nickname").val() == "") {
+          Swal.fire("제대로 입력하셨나요?", "등급을 적용시킬 유저를 입력해주세요.", "error"); return;
+        }
+        sendPost("https://redlimerl.com/rlnetwork/purchase/", { "type": "VIP+", "user": $(".nickname").val(), "sandbox": "baba323300"});
+      })
+      $(document).on("click", ".donate-purchase-mvp", function() {
+        if ($(".nickname").val() == "") {
+          Swal.fire("제대로 입력하셨나요?", "등급을 적용시킬 유저를 입력해주세요.", "error"); return;
+        }
+        sendPost("https://redlimerl.com/rlnetwork/purchase/", { "type": "MVP", "user": $(".nickname").val(), "sandbox": "baba323300"});
+      })
+    });
+  </script>
+
 
 </body>
 
