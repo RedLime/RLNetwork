@@ -275,19 +275,19 @@
         if ($(".nickname").val() == "") {
           Swal.fire("제대로 입력하셨나요?", "등급을 적용시킬 유저를 입력해주세요.", "error"); return;
         }
-        sendPost("https://redlimerl.com/rlnetwork/purchase/", { "type": "VIP", "user": $(".nickname").val(), "sandbox": "baba323300"});
+        sendPost("https://redlimerl.com/rlnetwork/purchase/", { "type": "VIP", "user": $(".nickname").val()});
       })
       $(document).on("click", ".donate-purchase-vip-plus", function() {
         if ($(".nickname").val() == "") {
           Swal.fire("제대로 입력하셨나요?", "등급을 적용시킬 유저를 입력해주세요.", "error"); return;
         }
-        sendPost("https://redlimerl.com/rlnetwork/purchase/", { "type": "VIP+", "user": $(".nickname").val(), "sandbox": "baba323300"});
+        sendPost("https://redlimerl.com/rlnetwork/purchase/", { "type": "VIP+", "user": $(".nickname").val()});
       })
       $(document).on("click", ".donate-purchase-mvp", function() {
         if ($(".nickname").val() == "") {
           Swal.fire("제대로 입력하셨나요?", "등급을 적용시킬 유저를 입력해주세요.", "error"); return;
         }
-        sendPost("https://redlimerl.com/rlnetwork/purchase/", { "type": "MVP", "user": $(".nickname").val(), "sandbox": "baba323300"});
+        sendPost("https://redlimerl.com/rlnetwork/purchase/", { "type": "MVP", "user": $(".nickname").val()});
       })
     });
   </script>
